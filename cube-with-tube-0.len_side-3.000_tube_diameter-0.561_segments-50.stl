@@ -1,4 +1,4 @@
-solid cube-with-tube.len_side-3.000_tub_diameter-0.561_segments-50
+solid cube-with-tube-0.len_side-3.000_tube_diameter-0.561_segments-50
   facet normal -0.000000 0.000000 -1.000000
     outer loop
       vertex 1.686128 0.000000 0.000000
@@ -1917,4 +1917,4 @@ solid cube-with-tube.len_side-3.000_tub_diameter-0.561_segments-50
       vertex 1.780500 1.500000 0.000000
     endloop
   endfacet
-endsolid cube-with-tube.len_side-3.000_tub_diameter-0.561_segments-50
+endsolid cube-with-tube-0.len_side-3.000_tube_diameter-0.561_segments-50

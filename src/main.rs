@@ -18,24 +18,38 @@ fn create_cube_with_tube(len_side: f64, tube_diameter: f64, segments: usize) -> 
 
 fn main() {
     // Check for the correct number of command line arguments
-    if env::args().len() != 4 {
-        eprintln!("Usage: cube-with-tube len_side tube_diameter tube_segments");
+    if env::args().len() != 6 {
+        eprintln!("Usage: cube-with-tube len_side tube_diameter segments cube_count tube_diameter_step");
         std::process::exit(1);
     }
 
     // Parse command line arguments to get the spindle dimensions
     let args: Vec<String> = env::args().collect();
     let len_side = args[1].parse::<f64>().unwrap();
-    let tube_diameter = args[2].parse::<f64>().unwrap();
+    let smallest_tube_diameter = args[2].parse::<f64>().unwrap();
     let segments = args[3].parse::<usize>().unwrap();
+    let cube_count = args[4].parse::<usize>().unwrap();
+    let tube_diameter_step = args[5].parse::<f64>().unwrap();
 
-    let cube_with_tube = create_cube_with_tube(len_side, tube_diameter, segments);
+    for cube_idx in 0..cube_count {
+        let tube_diameter = smallest_tube_diameter + (cube_idx as f64 * tube_diameter_step);
+        let cube_with_tube = create_cube_with_tube(len_side, tube_diameter, segments);
 
-    // Write the result as an ASCII STL:
-    let name = &format!(
-        "cube-with-tube.len_side-{:0.3}_tub_diameter-{:0.3}_segments-{:}",
-        len_side, tube_diameter, segments
-    );
-    let stl = cube_with_tube.to_stl_ascii(name);
-    std::fs::write(name.to_owned() + ".stl", stl).unwrap();
+        // Write the result as an ASCII STL:
+        let name = &format!(
+            "cube-with-tube-{}.len_side-{:0.3}_tube_diameter-{:0.3}_segments-{}",
+            cube_idx, len_side, tube_diameter, segments
+        );
+        let stl = cube_with_tube.to_stl_ascii(name);
+        std::fs::write(name.to_owned() + ".stl", stl).unwrap();
+    }
+    ////let cube_with_tube = create_cube_with_tube(len_side, smallest_tube_diameter, segments);
+
+    //// Write the result as an ASCII STL:
+    //let name = &format!(
+    //    "cube-with-tube.len_side-{:0.3}_smallest_tube_diameter-{:0.3}_segments-{}_cube_count-{}_tube_diameter_step-{:0.3}",
+    //    len_side, smallest_tube_diameter, segments, cube_count, tube_diameter_step
+    //);
+    //let stl = cube_with_tube.to_stl_ascii(name);
+    //std::fs::write(name.to_owned() + ".stl", stl).unwrap();
 }
