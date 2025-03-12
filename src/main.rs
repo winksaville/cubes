@@ -7,7 +7,7 @@ fn main() {
 
     // Check for the correct number of command line arguments
     if env::args().len() != 5 {
-        eprintln!("Usage: cube-with-tube len_side tube_diameter tube_wall_thickness tub_segments");
+        eprintln!("Usage: cube-with-tube len_side tube_diameter tube_segments");
         std::process::exit(1);
     }
 
@@ -15,33 +15,20 @@ fn main() {
     let args: Vec<String> = env::args().collect();
     let len_side= args[1].parse::<f64>().unwrap();
     let tube_diameter= args[2].parse::<f64>().unwrap();
-    let tube_wall_thickness = args[3].parse::<f64>().unwrap();
     let segments= args[4].parse::<usize>().unwrap();
 
     let cube= CSG::cube(len_side, len_side, len_side, None);
 
-    // Create cylinder for the tube
-    let outer_radius = (tube_diameter + tube_wall_thickness) / 2.0;
-    let inner_radius = tube_diameter / 2.0;
-    let cylinder = CSG::cylinder(outer_radius, len_side, segments, None);  // 1 x 20 cylinder
+    // Create the tube and translate it to the center of the cube
+    let tube_radius = tube_diameter / 2.0;
+    let tube = CSG::cylinder(tube_radius, len_side, segments, None);  // 1 x 20 cylinder
+    let tube = tube.translate(Vector3::new(len_side / 2.0, len_side / 2.0, 0.0));
 
-    // Move the cylinder to the center of the cube
-    let cylinder = cylinder.translate(Vector3::new(len_side / 2.0, len_side / 2.0, 0.0));
-
-    // Combine the cube and the cylinder
-    let cube_and_cylinder = cube.union(&cylinder);
-
-    // This will be the hole in the cube
-    let tube_hole= CSG::cylinder(inner_radius, len_side, segments, None);  // 1 x 20 cylinder
-
-    // Move the tube_hole to the center of the cube
-    let tube_hole = tube_hole.translate(Vector3::new(len_side / 2.0, len_side / 2.0, 0.0));
-
-    // Remove the material from the cube_and_tube
-    let cube_with_hole = cube_and_cylinder.difference(&tube_hole);
+    // Remove the material from the cube to create the tube
+    let cube_with_tube = cube.difference(&tube);
 
     // Write the result as an ASCII STL:
-    let name = &format!("cube-with-tube.len_side{:0.3}_tub_diameter{:0.3}_tube_wall_thickness{:0.2}_segments{:}", len_side, tube_diameter, tube_wall_thickness, segments);
-    let stl = cube_with_hole.to_stl_ascii(name);
+    let name = &format!("cube-with-tube.len_side-{:0.3}_tub_diameter-{:0.3}_segments-{:}", len_side, tube_diameter, segments);
+    let stl = cube_with_tube.to_stl_ascii(name);
     std::fs::write(name.to_owned() + ".stl", stl).unwrap();
 }

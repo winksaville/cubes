@@ -11,35 +11,34 @@ cargo install --path .
 
 ```
 $ cube-with-tube
-Usage: cube-with-tube len_side tube_diameter tube_wall_thickness tub_segments
+Usage: cube-with-tube len_side tube_diameter tube_segments
 ```
 
 ## Run
 
-Create a spindle with 1mm diameter dots, 2.3mm spacing, 20mm height, and 40 segments.
+Create a cube with a tube in the center with the following dimensions:
 ```
-$ cargo run 3 0.561 0.1 50
+$ cargo run 3 0.561 50
 ```
 
 or if installed
 
 ```
-$ cargo-with-tube 3 0.561 0.1 50
+$ cargo-with-tube 3 0.561 50
 ```
 
 Display the spindle in a 3D viewer.
 ```
 
-$ f3d cube-with-tube.len_side3.000_tub_diameter0.561_tube_wall_thickness0.10_segments50.stl
+$ f3d cube-with-tube.len_side-3.000_tub_diameter-0.561_segments-50.stl
 ```
 
 Create a png image of the spindle.
 ```
-
-$ f3d cube-with-tube.len_side3.000_tub_diameter0.561_tube_wall_thickness0.10_segments50.stl --output cube-with-tube.len_side3.000_tub_diameter0.561_tube_wall_thickness0.10_segments50.stl.png
+$ f3d cube-with-tube.len_side-3.000_tub_diameter-0.561_segments-50.stl --output cube-with-tube.len_side-3.000_tub_diameter-0.561_segments-50.stl.png 
 ```
 
-![cargo-with-tube -- 3 0.561 0.1 50](./cube-with-tube.len_side3.000_tub_diameter0.561_tube_wall_thickness0.10_segments50.stl.png)
+![cargo-with-tube -- 3 0.561 0.1 50](./cube-with-tube.len_side-3.000_tub_diameter-0.561_segments-50.stl.png)
 
 ## License
 
