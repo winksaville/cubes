@@ -4,5 +4,5 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
-csgrs = "0.15.2"
+csgrs = "0.16.0"
 nalgebra = "0.33.2"

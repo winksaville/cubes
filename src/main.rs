@@ -1,4 +1,3 @@
-use nalgebra::Vector3;
 use std::env;
 
 // Alias the library’s generic CSG type;
@@ -10,7 +9,7 @@ fn create_cube_with_tube(len_side: f64, tube_diameter: f64, segments: usize) -> 
     // Create the tube and translate it to the center of the cube
     let tube_radius = tube_diameter / 2.0;
     let tube = Csg::cylinder(tube_radius, len_side, segments, None);
-    let tube = tube.translate(Vector3::new(len_side / 2.0, len_side / 2.0, 0.0));
+    let tube = tube.translate(len_side / 2.0, len_side / 2.0, 0.0);
 
     // Remove the material from the cube to create the tube
     cube.difference(&tube)
