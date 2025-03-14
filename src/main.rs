@@ -42,13 +42,4 @@ fn main() {
         let stl = cube_with_tube.to_stl_ascii(name);
         std::fs::write(name.to_owned() + ".stl", stl).unwrap();
     }
-    ////let cube_with_tube = create_cube_with_tube(len_side, smallest_tube_diameter, segments);
-
-    //// Write the result as an ASCII STL:
-    //let name = &format!(
-    //    "cube-with-tube.len_side-{:0.3}_smallest_tube_diameter-{:0.3}_segments-{}_cube_count-{}_tube_diameter_step-{:0.3}",
-    //    len_side, smallest_tube_diameter, segments, cube_count, tube_diameter_step
-    //);
-    //let stl = cube_with_tube.to_stl_ascii(name);
-    //std::fs::write(name.to_owned() + ".stl", stl).unwrap();
 }
