@@ -47,14 +47,33 @@ $ f3d cube-with-tube-0.len_side-3.000_tube_diameter-0.561_segments-50.stl --outp
 Here we create 5 cubes with a 2.397 side length and a tube diameter of 0.561.
 The tube diameter is increased by 0.017 which is the resolution of my printer.
 
-I've chosen the physical dimension number, 2.397, 0.561 and 0.085 as they are
-multiples of 0.017, which is the resolution of the 3D printer I'm using and
-the range of diameters is 0.561 to 0.629 and one of these should nicely fit
-straight pin in the tube, I hope :)
+I've chosen the physical dimension numbers 2.397, 0.561 and 0.017 as they are
+multiples of 0.017, which is the resolution of the 3D printer.
+The range of diameters is 0.561 to 0.629 and one of these should nicely fit
+straight pin in the tube. The pin with a diameter of 0.629 was loose at first
+but after two days the it is not a little tight. So apparently it has shrunk
+a little. These have not yet been cured with UV light so I need to do that
+and also do it right after washing to see/feel the difference.
+
+Also, I need to actually measure the pin diameters there are at least two
+different sizes. The pinkish pins are slightly smaller in diameter than the
+other pins.
 
 ```
-cargo run 2.397 0.561 20 5 0.017
+cargo run 2.397 0.561 50 5 0.017
 ```
+
+Here are some pics of the cubes taken at 2x (focal len 2.4 mm) optical zoom with my Pixel 7a.
+
+This is a pic via a microscope using the 10x objective and 2x
+primary lens, IIRC.
+![cube-595-612-620](./cubes-595-612-629.jpg)
+
+5 cubes on 1 pin:
+![cubes-5-on-1-pin](./cubes-5-on-1-pin.jpg)
+
+5 cubes on 5 pins:
+![cubes-5-on-5-pins](./cubes-5-on-5-pins.jpg)
 
 ## License
 
