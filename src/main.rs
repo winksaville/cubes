@@ -3,7 +3,7 @@ use std::env;
 // Alias the library’s generic CSG type;
 type CSG<T> = csgrs::csg::CSG<T>;
 
-fn create_cube_with_tube(len_side: f64, tube_diameter: f64, segments: usize) -> CSG<f64> {
+fn create_cube_with_tube(len_side: f64, tube_diameter: f64, segments: usize) -> CSG<()> {
     let mut cube = CSG::cube(len_side, len_side, len_side, None);
 
     // Create the tube and translate it to the center of the cube
@@ -13,7 +13,7 @@ fn create_cube_with_tube(len_side: f64, tube_diameter: f64, segments: usize) -> 
 
     let font_data = include_bytes!("../fonts/courier-prime-sans/courier-prime-sans.ttf");
     let text = format!("{:3}", (tube_diameter * 1000.0) as usize);
-    let csg_text: CSG<f64> = CSG::text(&text, font_data, 4.5, None);
+    let csg_text: CSG<()> = CSG::text(&text, font_data, 4.5, None);
     let csg_text_extents = csg_text.bounding_box().extents();
     println!("cgs_text_extents: {:?}", csg_text_extents);
     let text_3d = csg_text.extrude(0.1);
