@@ -1,7 +1,5 @@
+use csgrs::csg::CSG;
 use std::env;
-
-// Alias the library’s generic CSG type;
-type CSG<T> = csgrs::csg::CSG<T>;
 
 fn create_cube_with_tube(len_side: f64, tube_diameter: f64, segments: usize) -> CSG<()> {
     let mut cube = CSG::cube(len_side, len_side, len_side, None);
@@ -21,7 +19,11 @@ fn create_cube_with_tube(len_side: f64, tube_diameter: f64, segments: usize) -> 
     let half_len_side = len_side / 2.0;
     let half_extents_y = csg_text_extents.y / 2.0;
     let half_extents_x = csg_text_extents.x / 2.0;
-    let text_3d = text_3d.translate(half_len_side - half_extents_x, 0.0, half_len_side - half_extents_y);
+    let text_3d = text_3d.translate(
+        half_len_side - half_extents_x,
+        0.0,
+        half_len_side - half_extents_y,
+    );
 
     // Union the cube with the tube
     cube = cube.union(&text_3d);
@@ -33,7 +35,9 @@ fn create_cube_with_tube(len_side: f64, tube_diameter: f64, segments: usize) -> 
 fn main() {
     // Check for the correct number of command line arguments
     if env::args().len() != 6 {
-        eprintln!("Usage: cube-with-tube len_side tube_diameter segments cube_count tube_diameter_step");
+        eprintln!(
+            "Usage: cube-with-tube len_side tube_diameter segments cube_count tube_diameter_step"
+        );
         std::process::exit(1);
     }
 
