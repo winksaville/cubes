@@ -4,5 +4,11 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
-csgrs = "0.16.0"
 nalgebra = "0.33.2"
+
+[dependencies.csgrs]
+version = "0.16.0"
+default-features = false
+# ATM f32 doesn't compile
+features = ["f32", "stl-io", "dxf-io", "truetype-text", "hershey-text", "chull-io", "image-io", "metaballs", "hashmap", "sdf", "offset"]
+#features = ["f64", "stl-io", "dxf-io", "truetype-text", "hershey-text", "chull-io", "image-io", "metaballs", "hashmap", "sdf", "offset"]
