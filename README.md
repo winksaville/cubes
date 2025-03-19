@@ -18,6 +18,31 @@ Usage: cube-with-tube len_side tube_diameter segments cube_count tube_diameter_s
 
 ### Create one cube
 
+Create one cube
+```
+$ cargo run 3.000 0 0 1 0
+```
+
+or if installed
+
+```
+$ cargo run 3.000 0 0 1 0
+```
+
+Display the spindle in a 3D viewer.
+```
+$ f3d cube.len_side-3.000.stl
+```
+
+Create a png image of the spindle.
+```
+$ f3d cube.len_side-3.000.stl --output cube.len_side-3.000.stl.png
+```
+
+![cube.len_size-3.000](./cube.len_side-3.000.stl.png)
+
+### Create one cube with a tube
+
 Create one cube with a tube in the center with the following dimensions:
 ```
 $ cargo run 3 0.561 50 1 0
