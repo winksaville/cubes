@@ -433,7 +433,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "cube-with-tube"
+name = "cubes"
 version = "0.1.0"
 dependencies = [
  "clap",

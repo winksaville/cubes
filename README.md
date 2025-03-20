@@ -1,6 +1,6 @@
-# Cube with a tube in the center
+# Cubes
 
-Create cubes with a tube in the center
+Create one or more cubes with an optional tube in the center
 
 ## Install
 
@@ -10,8 +10,27 @@ cargo install --path .
 ## Usage
 
 ```
-$ cube-with-tube
-Usage: cube-with-tube len_side tube_diameter segments cube_count tube_diameter_step
+$ cubes --help
+Create one or more cubes with an optional tube in the center
+
+Usage: cubes [OPTIONS] <LEN_SIDE>
+
+Arguments:
+  <LEN_SIDE>
+
+Options:
+  -c, --cube-count <CUBE_COUNT>
+          The number of cubes to create [default: 1]
+  -m, --min-tube-diameter <MIN_TUBE_DIAMETER>
+          The minimum diameter of the tube in mm, 0 for no tube [default: 0.0]
+  -t, --tube-diameter-step <TUBE_DIAMETER_STEP>
+          The number mm's to increase the tube diameter by when there are multiple cubes [default: 0.0]
+  -s, --segments <SEGMENTS>
+          The number of segments to use when creating the tube, minimum is 3 [default: 50]
+  -h, --help
+          Print help
+  -V, --version
+          Print version
 ```
 
 ## Run
@@ -20,16 +39,16 @@ Usage: cube-with-tube len_side tube_diameter segments cube_count tube_diameter_s
 
 Create one cube
 ```
-$ cargo run 3.000 0 0 1 0
+$ cargo run 3
 ```
 
 or if installed
 
 ```
-$ cargo run 3.000 0 0 1 0
+$ cubes 3
 ```
 
-Display the spindle in a 3D viewer.
+Display the cube in a 3D viewer.
 ```
 $ f3d cube.len_side-3.000.stl
 ```
