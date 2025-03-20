@@ -10,6 +10,7 @@ cargo install --path .
 ## Usage
 
 ```
+wink@3900x 25-03-20T03:00:52.949Z:~/data/prgs/3dprinting/cube-with-tube (main)
 $ cubes --help
 Create one or more cubes with an optional tube in the center
 
@@ -27,6 +28,8 @@ Options:
           The number mm's to increase the tube diameter by when there are multiple cubes [default: 0.0]
   -s, --segments <SEGMENTS>
           The number of segments to use when creating the tube, minimum is 3 [default: 50]
+  -n, --no-diameter-text
+          Don't include text for the tube diameter on the object
   -h, --help
           Print help
   -V, --version
@@ -53,7 +56,7 @@ Display the cube in a 3D viewer.
 $ f3d cube.len_side-3.000.stl
 ```
 
-Create a png image of the spindle.
+Create a png image of the cube.
 ```
 $ f3d cube.len_side-3.000.stl --output cube.len_side-3.000.stl.png
 ```
@@ -62,29 +65,28 @@ $ f3d cube.len_side-3.000.stl --output cube.len_side-3.000.stl.png
 
 ### Create one cube with a tube
 
-Create one cube with a tube in the center with the following dimensions:
+Create one cube 3mm on a side with a triangular tube inscribed in a 0.561 circle:
 ```
-$ cargo run 3 0.561 50 1 0
+$ cargo run 3 -m 0.561 -s 3
 ```
 
 or if installed
 
 ```
-$ cargo-with-tube 3 0.561 50 1 0
+$ cubes 3 -m 0.561 -s 3
 ```
 
-Display the spindle in a 3D viewer.
+Display the cube in a 3D viewer.
+```
+$ f3d cube-with-tube.len_side-3.000_tube_diameter-0.561_segments-3.stl
 ```
 
-$ f3d cube-with-tube-0.len_side-3.000_tube_diameter-0.561_segments-50.stl
+Create a png image of the cube.
+```
+$ f3d cube-with-tube-0.len_side-3.000_tube_diameter-0.561_segments-3.stl --output cube-with-tube-0.len_side-3.000_tube_diameter-0.561_segments-3.stl.png
 ```
 
-Create a png image of the spindle.
-```
-$ f3d cube-with-tube-0.len_side-3.000_tube_diameter-0.561_segments-50.stl --output cube-with-tube-0.len_side-3.000_tube_diameter-0.561_segments-50.stl.png 
-```
-
-![cargo-with-tube -- 3 0.561 50 1 0](./cube-with-tube-0.len_side-3.000_tube_diameter-0.561_segments-50.stl.png)
+![cargo-with-tube 3 -m 0.561 -s 3](./cube-with-tube.len_side-3.000_tube_diameter-0.561_segments-3.stl.png)
 
 ### Print mulitple cubes with tubes in the center
 
@@ -104,7 +106,7 @@ different sizes. The pinkish pins are slightly smaller in diameter than the
 other pins.
 
 ```
-cargo run 2.397 0.561 50 5 0.017
+cargo run 2.397 -m 0.561 -s 50 -c 5 -t 0.017
 ```
 
 Here are some pics of the cubes taken at 2x (focal len 2.4 mm) optical zoom with my Pixel 7a.
