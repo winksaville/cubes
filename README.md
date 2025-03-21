@@ -53,7 +53,7 @@ $ cubes 3
 
 Display the cube in a 3D viewer.
 ```
-$ f3d cube.len_side-3.000.stl
+$ f3d cubes.len_side-3.000.stl
 ```
 
 Create a png image of the cube.
@@ -61,52 +61,47 @@ Create a png image of the cube.
 $ f3d cube.len_side-3.000.stl --output cube.len_side-3.000.stl.png
 ```
 
-![cube.len_size-3.000](./cube.len_side-3.000.stl.png)
+![cube.len_side-3.000](./cube.len_side-3.000.stl.png)
 
 ### Create one cube with a tube
 
-Create one cube 3mm on a side with a triangular tube inscribed in a 0.561 circle:
+Create one cube 3mm on a side with a square tube inscribed in a 0.595 circle:
 ```
-$ cargo run 3 -m 0.561 -s 3
+$ cargo run 3 -m 0.595 -s 4
 ```
 
 or if installed
 
 ```
-$ cubes 3 -m 0.561 -s 3
+$ cubes 3 -m 0.595 -s 4
 ```
 
 Display the cube in a 3D viewer.
 ```
-$ f3d cube-with-tube.len_side-3.000_tube_diameter-0.561_segments-3.stl
+$ f3d cube.len_side-3.000_tube_diameter-0.595_segments-4.stl
 ```
 
 Create a png image of the cube.
 ```
-$ f3d cube-with-tube-0.len_side-3.000_tube_diameter-0.561_segments-3.stl --output cube-with-tube-0.len_side-3.000_tube_diameter-0.561_segments-3.stl.png
+$ f3d cube.len_side-3.000_tube_diameter-0.595_segments-4.stl --output cube.len_side-3.000_tube_diameter-0.595_segments-4.stl.png
 ```
 
-![cargo-with-tube 3 -m 0.561 -s 3](./cube-with-tube.len_side-3.000_tube_diameter-0.561_segments-3.stl.png)
+![cube 3 -m 0.595 -s 4](./cube.len_side-3.000_tube_diameter-0.595_segments-4.stl.png)
 
 ### Print mulitple cubes with tubes in the center
 
-Here we create 5 cubes with a 2.397 side length and a tube diameter of 0.561.
+Here we create 5 cubes with a 2.397 side length and a tube diameter of 0.595.
 The tube diameter is increased by 0.017 which is the resolution of my printer.
 
-I've chosen the physical dimension numbers 2.397, 0.561 and 0.017 as they are
-multiples of 0.017, which is the resolution of the 3D printer.
-The range of diameters is 0.561 to 0.629 and one of these should nicely fit
-straight pin in the tube. The pin with a diameter of 0.629 was loose at first
-but after two days the it is not a little tight. So apparently it has shrunk
-a little. These have not yet been cured with UV light so I need to do that
-and also do it right after washing to see/feel the difference.
+I've chosen the physical dimension numbers 2.397, 0.595 and 0.017 as they are
+multiples of 0.017. The range of diameters is 0.595 to 0.663 and one of these
+should nicely fit a straight pin in the tube.
 
 Also, I need to actually measure the pin diameters there are at least two
-different sizes. The pinkish pins are slightly smaller in diameter than the
-other pins.
+different sizes.
 
 ```
-cargo run 2.397 -m 0.561 -s 50 -c 5 -t 0.017
+cargo run 2.397 -m 0.595 -s 50 -c 5 -t 0.017
 ```
 
 Here are some pics of the cubes taken at 2x (focal len 2.4 mm) optical zoom with my Pixel 7a.

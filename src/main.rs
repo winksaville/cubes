@@ -1,4 +1,4 @@
-use clap::{Parser, value_parser};
+use clap::{value_parser, Parser};
 use csgrs::csg::CSG;
 
 // Define the command line arguments
@@ -53,8 +53,9 @@ fn create_cube(len_side: f64, tube_diameter: f64, segments: u32, no_diameter_tex
             let text = format!("{:3}", (tube_diameter * 1000.0) as usize);
             let csg_text: CSG<()> = CSG::text(&text, font_data, 4.5, None);
             let csg_text_bb = csg_text.bounding_box();
+            //println!("cgs_text_bb: {:?}", csg_text_bb);
             let csg_text_extents = csg_text_bb.extents();
-            println!("cgs_text_extents: {:?}", csg_text_extents);
+            //println!("cgs_text_extents: {:?}", csg_text_extents);
 
             let text_extrude = 0.1;
             let text_3d = csg_text.extrude(text_extrude);
@@ -103,7 +104,7 @@ fn main() {
         // Write the result as an ASCII STL:
         let name = if tube_diameter > 0.0 {
             format!(
-                "cube-with-tube{}.len_side-{:0.3}_tube_diameter-{:0.3}_segments-{}",
+                "cube{}.len_side-{:0.3}_tube_diameter-{:0.3}_segments-{}",
                 cube_idx_str, args.len_side, tube_diameter, args.segments
             )
         } else {
