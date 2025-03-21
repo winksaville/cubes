@@ -425,8 +425,8 @@ dependencies = [
  "hershey",
  "image",
  "nalgebra",
- "parry3d-f64",
- "rapier3d-f64",
+ "parry3d",
+ "rapier3d",
  "stl_io",
  "ttf-parser",
  "ttf-utils",
@@ -1181,10 +1181,10 @@ dependencies = [
 ]
 
 [[package]]
-name = "parry3d-f64"
+name = "parry3d"
 version = "0.18.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "c8b2e297ab09d7c3b746e59c23f5bd44e235540424dcccbf28314db9ccf0938f"
+checksum = "ecb572cea5c76b06bc744aaefdbb9e6ea9e5695f50f79c0227bddecd6ec925a4"
 dependencies = [
  "approx",
  "arrayvec",
@@ -1329,10 +1329,10 @@ dependencies = [
 ]
 
 [[package]]
-name = "rapier3d-f64"
+name = "rapier3d"
 version = "0.23.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "edc3a0f6599561a675bc146df202a2d3a8c9c37e3509a91ddc7c81e36e384115"
+checksum = "37d84644f385b81f065576058bc8f7e3d64e56a66f2f5fc40bfd917774659e12"
 dependencies = [
  "approx",
  "arrayvec",
@@ -1345,7 +1345,7 @@ dependencies = [
  "num-derive",
  "num-traits 0.2.19",
  "ordered-float",
- "parry3d-f64",
+ "parry3d",
  "profiling",
  "rustc-hash",
  "simba",
