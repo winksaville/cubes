@@ -66,8 +66,11 @@ $ f3d cube.len_side-3.000.stl --output cube.len_side-3.000.stl.png
 ### Create one cube with a tube
 
 Create one cube 3mm on a side with a square tube inscribed in a 0.595 circle:
+
+> Note: When adding a tube the cube is not a manifold :(
 ```
-$ cargo run 3 -m 0.595 -s 4
+$ cubes 2.397 -m 0.595 -n -s 4
+The cube_idx 0 is not a manifold
 ```
 
 or if installed
@@ -101,7 +104,15 @@ Also, I need to actually measure the pin diameters there are at least two
 different sizes.
 
 ```
-cargo run 2.397 -m 0.595 -s 50 -c 5 -t 0.017
+$ cargo run 2.397 -m 0.595 -s 50 -c 5 -t 0.017
+   Compiling cubes v0.1.0 (/home/wink/cubes)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 1.40s
+     Running `target/debug/cubes 2.397 -m 0.595 -s 50 -c 5 -t 0.017`
+The cube_idx 0 is not a manifold
+The cube_idx 1 is not a manifold
+The cube_idx 2 is not a manifold
+The cube_idx 3 is not a manifold
+The cube_idx 4 is not a manifold
 ```
 
 Here are some pics of the cubes taken at 2x (focal len 2.4 mm) optical zoom with my Pixel 7a.

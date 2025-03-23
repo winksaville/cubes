@@ -95,6 +95,10 @@ fn main() {
         let cube_with_tube = create_cube(args.len_side, tube_diameter, args.segments, args.no_diameter_text,
         );
 
+        if !cube_with_tube.is_manifold() {
+            println!("The cube_idx {cube_idx} is not a manifold");
+        }
+
         let cube_idx_str = if args.cube_count > 1 {
             format!("-{}", cube_idx)
         } else {
